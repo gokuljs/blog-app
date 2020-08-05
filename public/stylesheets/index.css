@@ -1,0 +1,78 @@
+*,
+*::after,
+::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; }
+
+/* 
+  root font size if done in html selector 
+  converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
+ */
+/* '
+     1 rem is equal to 10 px 
+  */
+html {
+  /*
+     here we are setting default font-size for the browser view 
+     (10/16)=0.625*100=62.5%,0.625*20=12.5
+     
+     */
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  /* padding: 30px; */ }
+
+.blog {
+  width: 90%;
+  padding-top: 1.5rem;
+  padding-left: 2rem;
+  margin: 0 auto;
+  margin-top: 3rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .blog__img {
+    margin-right: 5rem;
+    margin-left: -10rem;
+    margin-top: -3rem;
+    padding: 3rem;
+    width: 35rem;
+    height: 35rem;
+    padding: 4rem;
+    display: inline-block;
+    float: left;
+    box-sizing: border-box; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto;
+  margin-bottom: 8rem; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-0f-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-0f-3 {
+    width: calc((100% - 2*6rem) / 3); }
+  .row .col-2-0f-3 {
+    width: calc(2*((100% - 2*6rem) / 3) + 6rem); }
+  .row .col-1-0f-4 {
+    width: calc((100% - 3*6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2*((100% - 3*6rem) / 4) + 6rem); }
+  .row .col-3-0f-4 {
+    width: calc(3*((100% - 3*6rem) / 4) + 2*6rem); }
