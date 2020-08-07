@@ -1,0 +1,174 @@
+  // variables for colors 
+  $color-primary:#55c57a;
+  $color-primary-dark:#28b485;
+  $color-secondary-light:#ffb900;
+  $color-secondary-dark:#ff7730;
+  $color-tertiary-light:#2998ff;
+  $color-tertiary-dark:#5643fa;
+  $color-orange:orange;
+  $color-primary-light:#7ed56f;
+  $color-grey-dark: #777;
+  $color-white:#fff;
+  $color-black:#000;
+  $color-grey-light-1:#f7f7f7;
+  $color-grey-light-2:#eee;
+  // my colors
+  $color-my-blue:#00203fff;
+  $color-my-green:#ADEFD1FF; // fonts
+  $color-my-red: #cc0033;
+  $color-my-purple: #7a0085;
+  $default-font-size:1.6rem;
+  // variables that comes under grid system 
+  $grid-width:114rem;
+  $gutter-vertical:8rem;
+  $gutter-horizontal:6rem;
+  //this are the basic defination of our project
+  // clearfix is used remove the error when we use float and hieght collapses 
+  // creating a mixin
+  @mixin clearfix {
+      &::after {
+          content: "";
+          display: table;
+          clear: both;
+      }
+  }
+  
+  *,
+  *::after,
+   ::before {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+  }
+  /* 
+root font size if done in html selector 
+converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
+*/
+  /* '
+1 rem is equal to 10 px 
+*/
+  
+  html {
+      /*
+here we are setting default font-size for the browser view 
+(10/16)=0.625*100=62.5%,0.625*20=12.5
+
+*/
+      font-size: 62.5%;
+  }
+  
+  body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      /* font-size: 16px; */
+      line-height: 1.7;
+      // background-color: black;
+      color: $color-grey-dark;
+      /* padding: 30px; */
+      // padding: 3rem;
+  }
+  
+  .formpage {
+      width: 70%;
+      margin: 0 auto;
+      padding: 3rem;
+      // background-color: grey;
+      margin-top: 12rem;
+      // border: .2rem solid grey;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+      &__header {
+          margin: 0 auto;
+          // color: orange;
+          text-align: center;
+          text-transform: uppercase;
+          font-size: 3rem;
+          letter-spacing: .8rem;
+          // font-family: 'Nothing You Could Do', cursive;
+          // font-family: 'Fredericka the Great', cursive;
+          font-family: 'Gruppo', cursive;
+          // box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+          // background-image: linear-gradient(to right, $color-primary-light, $color-orange);
+          // -webkit-background-clip: text;
+          // color: transparent;
+          // &:hover {
+          //     transform: skewY(2deg) skewX(10deg) scale(1.1);
+          //     text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+          // }
+      }
+  }
+  
+  .form {
+      width: 70%;
+      margin: 0 auto;
+      padding: 2rem;
+      margin-top: 3rem;
+      flex-direction: column;
+      &__group {
+          font-style: inherit;
+          margin: 0 auto;
+          box-sizing: border-box;
+          display: flex;
+          &--1 {
+              margin: 0 auto;
+              margin-left: 4rem;
+              padding: 3rem;
+          }
+      }
+      &__input {
+          margin: 0 auto;
+          width: 40%;
+          outline: none;
+          padding-left: 0rem;
+          padding-right: 3rem;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          border-style: none;
+          border-bottom: .1rem solid #21003E;
+          transition: all .1s;
+          &:hover {
+              text-transform: uppercase;
+              font-size: 1.2rem;
+              border-bottom: .1rem solid #62008F;
+              box-shadow: 0 1rem 2rem rgba(#62008F, 0.2);
+              padding: 2rem;
+              border-radius: 1rem;
+              width: 50%;
+              margin-right: 1rem;
+          }
+      }
+      &__textarea {
+          // margin: 0 auto;
+          outline: none;
+          border-style: none;
+          // padding: 7rem;
+          width: 93%;
+          height: 15rem;
+          border-radius: 1rem;
+          padding: 1rem; // padding-left: 0rem;
+          // padding-top: 0
+          box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+          &:hover {
+              text-transform: uppercase;
+              font-size: 1.2rem;
+              border-bottom: .1rem solid #62008F;
+              box-shadow: 0 1rem 2rem rgba(#62008F, 0.2);
+              padding: 2rem;
+          }
+      }
+      &__button {
+          width: 20rem;
+          margin: 0 auto;
+          margin-top: 2.5rem;
+          margin-left: 23.5rem;
+          padding: 1rem;
+          font-style: inherit;
+          border-radius: 1rem;
+          background-color: white;
+          outline: none;
+          border: .1rem solid grey; // margin-left: 30rem;
+          font-size: 2rem;
+      }
+  }

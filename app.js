@@ -86,6 +86,27 @@ app.get("/blogs/:id", function(req, res) {
         }
     });
     // res.render("show");
+});
+// getting started with edit route 
+app.get("/blogs/:id/edit", function(req, res) {
+    console.log(req.params.id);
+    blog.findById(req.params.id, function(err, foundblog) {
+        if (err) {
+            console.log("error !");
+            res.redirect("/blogs")
+        } else {
+            // res.render("show", { blog: foundblog });
+            res.render("edit", { blog: foundblog });
+
+        }
+    });
+
+    // res.render("edit");
+});
+// update route
+// method-overide is used for using put request because normal html form tag has only post and get request 
+app.put("/blogs/:id", function(req, res) {
+    res.send("update route")
 })
 
 app.listen(4000, function(req, res) {
