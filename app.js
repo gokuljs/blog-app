@@ -52,11 +52,26 @@ app.get("/blogs", function(req, res) {
             res.render("index", { blogs: blogs });
 
         }
-    })
+    });
 });
 // creating one form to make new blogs
+// create route
 app.get("/blogs/new", function(req, res) {
     res.render("new")
+});
+
+app.post("/blogs", function(req, res) {
+    //in this post route it will receive content coming froom the form page 
+    // we craeate new blog and push it to datbase
+    console.log(req.body.blog);
+    blog.create(req.body.blog, function(err, newblog) {
+        if (err) {
+            console.log("Error !");
+            res.render("new")
+        } else {
+            res.redirect("/blogs")
+        }
+    })
 });
 
 app.listen(4000, function(req, res) {

@@ -16,10 +16,10 @@
             new blog
         </h1>
         <div class="form">
-            <form action="#">
+            <form action="/blogs" method="post">
                 <div class="form__group">
-                    <input type="text" class="form__input" placeholder="title" name="blog['title]'" required>
-                    <input type="text" class="form__input" placeholder="image-url" name="blog['image']" required>
+                    <input type="text" class="form__input" placeholder="title" name="blog[title]" required>
+                    <input type="text" class="form__input" placeholder="image-url" name="blog[img]" required>
                 </div>
                 <div class="form__group--1">
                     <textarea name="blog[body]" class="form__textarea" placeholder="body" required></textarea>
