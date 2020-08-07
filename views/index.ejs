@@ -35,29 +35,35 @@
 
         </ul>
     </nav>
+    <% blogs.forEach(function(blog) {%>
+        <section class="blog">
 
-    <section class="blog">
-        <div class="blog__section">
-            <div class="row">
-                <div class="col-1-0f-4">
-                    <img src="../img/blog3.jpg" alt="" class="blog__img">
-
-                </div>
-                <div class="col-3-0f-4">
-                    <div class="blog__header">
-                        <p class="blog__title">harley davidson</p>
-                        <p class="blog__date">mon apr 24 2020</p>
-                        <p class="blog__content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus dolores at impedit cum itaque in pariatur sunt ullam! Perspiciatis inventore alias enim ducimus, consequuntur animi debitis quis repudiandae ipsum optio? Lorem ipsum, dolor sit amet consectetur
-                            a ullam et cum laudantium consequuntur inventore aliquam incidunt illo quidem voluptatum ipsam impedit debitis ducimus commodi sit repellat nihil, officiis blanditiis.
-                        </p>
-                        <a href="#" alt="text" class="btn-text">Learn more &rarr; </a>
+            <div class="blog__section">
+                <div class="row">
+                    <div class="col-1-0f-4">
+                        <img src="<%=blog.img%> " alt="" class="blog__img">
 
                     </div>
+                    <div class="col-3-0f-4">
+                        <div class="blog__header">
+                            <p class="blog__title">
+                                <%=blog.title%>
+                            </p>
+                            <p class="blog__date">
+                                <%=blog.created%>
+                            </p>
+                            <p class="blog__content">
+                                <%= blog.body %>
+                            </p>
+                            <a href="#" alt="text" class="btn-text">Learn more &rarr; </a>
 
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-    </section>
+
+        </section>
+        <% }) %>
 
 </body>
 
