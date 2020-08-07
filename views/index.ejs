@@ -53,9 +53,9 @@
                                 <%=blog.created%>
                             </p>
                             <p class="blog__content">
-                                <%= blog.body %>
+                                <%= blog.body.substring(0,100) %> ....
                             </p>
-                            <a href="#" alt="text" class="btn-text">Learn more &rarr; </a>
+                            <a href="/blogs/<%=blog._id%> " alt="text" class="btn-text">Read more &rarr; </a>
 
                         </div>
 

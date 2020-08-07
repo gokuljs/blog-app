@@ -55,11 +55,11 @@ app.get("/blogs", function(req, res) {
     });
 });
 // creating one form to make new blogs
-// create route
+// new route
 app.get("/blogs/new", function(req, res) {
     res.render("new")
 });
-
+// create route 
 app.post("/blogs", function(req, res) {
     //in this post route it will receive content coming froom the form page 
     // we craeate new blog and push it to datbase
@@ -73,6 +73,20 @@ app.post("/blogs", function(req, res) {
         }
     })
 });
+
+// show route
+app.get("/blogs/:id", function(req, res) {
+    console.log(req.params.id);
+    blog.findById(req.params.id, function(err, foundblog) {
+        if (err) {
+            console.log("error !");
+            res.redirect("/blogs")
+        } else {
+            res.render("show", { blog: foundblog });
+        }
+    });
+    // res.render("show");
+})
 
 app.listen(4000, function(req, res) {
     console.log("port has started ")
