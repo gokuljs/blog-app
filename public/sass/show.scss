@@ -107,4 +107,50 @@ body {
         font-size: 2rem;
         padding: 2rem;
     }
+    &__deleteform {
+        display: inline;
+    }
+    &__button {
+        &--1 {
+            font-size: 1.7rem;
+            text-transform: uppercase;
+            padding: .5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            font-style: inherit;
+            text-decoration: none;
+            border: .1rem solid olive;
+            border-radius: .5rem;
+            color: olive;
+            margin: 1rem;
+            transition: all .2s;
+            &:hover {
+                border-style: none;
+                background-color: olive;
+                color: white;
+                box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+            }
+        }
+        &--2 {
+            display: inline;
+            font-size: 1.7rem;
+            text-transform: uppercase;
+            padding: .5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            font-style: inherit;
+            text-decoration: none;
+            border: .1rem solid red;
+            border-radius: .5rem;
+            color: red;
+            background-color: white;
+            transition: all .2s;
+            &:hover {
+                border-style: none;
+                background-color: red;
+                color: white;
+                box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+            }
+        }
+    }
 }

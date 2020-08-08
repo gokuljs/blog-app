@@ -25,6 +25,12 @@
             <%= blog.body %>
         </p>
         <!-- </div> -->
+        <!-- <div class="show__button"> -->
+        <a href="/blogs/<%= blog._id %>/edit" class="show__button--1">edit</a>
+        <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" class="show__deleteform">
+            <button class="show__button--2">Delete</button>
+        </form>
+        <!-- </div> -->
 
     </section>
 

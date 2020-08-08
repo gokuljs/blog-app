@@ -3,6 +3,8 @@ var express = require("express");
 var app = express();
 var bodyparser = require("body-parser");
 var mongoose = require("mongoose");
+var methodOverride = require("method-override");
+// var methodoverride = require("method-overide");
 
 
 // database
@@ -14,6 +16,7 @@ app.use(express.static(__dirname + '/public'));
 console.log(__dirname) // gives the dir name which the project is currently working on 
 app.set('view engine', 'ejs');
 app.use(bodyparser.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 // creating new schema for the blog 
 var blogschema = new mongoose.Schema({
@@ -106,7 +109,29 @@ app.get("/blogs/:id/edit", function(req, res) {
 // update route
 // method-overide is used for using put request because normal html form tag has only post and get request 
 app.put("/blogs/:id", function(req, res) {
-    res.send("update route")
+    // res.send("update route")
+    // blog.findByIdAndUpdate(req.params.id,newdata,callback)
+    blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updateblog) {
+        if (err) {
+            console.log(err);
+            res.redirect("/blogs")
+        } else {
+            res.redirect("/blogs/" + req.params.id);
+        }
+    });
+});
+// delete route 
+app.delete("/blogs/:id", function(req, res) {
+    // res.send("destroy route")\
+    blog.findByIdAndRemove(req.params.id, function(err) {
+        if (err) {
+            console.log("error !");
+            res.redirect("/blogs")
+        } else {
+            res.redirect("/blogs")
+
+        }
+    })
 })
 
 app.listen(4000, function(req, res) {

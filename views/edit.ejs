@@ -17,7 +17,7 @@
             <%= blog.title %>
         </h1>
         <div class="form">
-            <form action="/blogs/<%= blog._id %> " method="PUT">
+            <form action="/blogs/<%=blog._id%>?_method=PUT" method="POST">
                 <div class="form__group">
                     <input type="text" class="form__input" placeholder="title" name="blog[title]" value="<%= blog.title %> ">
                     <input type="text" class="form__input" placeholder="image-url" name="blog[img]" value="<%= blog.img %> ">
