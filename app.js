@@ -4,6 +4,7 @@ var app = express();
 var bodyparser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
+var expresssanitizer = require("express-sanitizer");
 // var methodoverride = require("method-overide");
 
 
@@ -16,6 +17,7 @@ app.use(express.static(__dirname + '/public'));
 console.log(__dirname) // gives the dir name which the project is currently working on 
 app.set('view engine', 'ejs');
 app.use(bodyparser.urlencoded({ extended: true }));
+app.use(expresssanitizer()); //only requirement is this should always comes after intinalizing body-parser
 app.use(methodOverride("_method"));
 
 // creating new schema for the blog 
@@ -67,6 +69,10 @@ app.post("/blogs", function(req, res) {
     //in this post route it will receive content coming froom the form page 
     // we craeate new blog and push it to datbase
     console.log(req.body.blog);
+    // applying santization
+    console.log(req.body);
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    console.log(req.body);
     blog.create(req.body.blog, function(err, newblog) {
         if (err) {
             console.log("Error !");
