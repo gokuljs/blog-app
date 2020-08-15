@@ -117,6 +117,9 @@ app.get("/blogs/:id/edit", function(req, res) {
 app.put("/blogs/:id", function(req, res) {
     // res.send("update route")
     // blog.findByIdAndUpdate(req.params.id,newdata,callback)
+    console.log(req.body);
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    console.log(req.body);
     blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updateblog) {
         if (err) {
             console.log(err);

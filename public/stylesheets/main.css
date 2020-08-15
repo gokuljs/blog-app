@@ -1,0 +1,143 @@
+*,
+*::after,
+::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* margin: 0px;
+     padding: 0px;
+     box-sizing:border-box; */ }
+
+/* 
+  root font size if done in html selector 
+  converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
+ */
+/* '
+     1 rem is equal to 10 px 
+  */
+html {
+  /*
+     here we are setting default font-size for the browser view 
+     (10/16)=0.625*100=62.5%,0.625*20=12.5
+     
+     */
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  /* padding: 30px; */ }
+
+a {
+  color: black; }
+
+.header {
+  height: 100vh;
+  margin: 0rem;
+  color: black;
+  padding: 0rem;
+  position: relative; }
+  .header__nav {
+    background: transparent;
+    padding: 2rem;
+    font-size: 2rem; }
+  .header__logo {
+    font-size: 4rem; }
+  .header__logo-left {
+    margin: 0;
+    float: left;
+    list-style: none;
+    display: inline-block; }
+  .header__logo-right {
+    color: orange;
+    float: right;
+    list-style: none;
+    margin: 0;
+    padding: .2rem;
+    padding-left: 4rem;
+    display: inline-block;
+    font-family: inherit;
+    text-transform: uppercase; }
+    .header__logo-right:hover {
+      text-align: center;
+      font-size: 2.3rem;
+      animation-delay: .2s;
+      backface-visibility: hidden; }
+
+.bg-video {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: .15;
+  overflow: hidden; }
+  .bg-video__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+
+.header__button {
+  marign: 0 auto; }
+
+.btn {
+  /* btn white is only playing a major role in coloring ur elements  */
+  /* hover works when ur mouse pointer goes above the word  */
+  /*
+ active works  hold ur mouse on it 
+ 
+  */
+  /*  
+     psuedo classes are special classes f a selector 
+     where button is the one of the sudo classes which is similiar hover element
+     so here link is an howver element for btn0 
+     
+     */
+  /* after psuedo elelments  */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.2rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: absolute;
+    top: 47%;
+    left: 42.3%;
+    font-size: 1.6rem; }
+  .btn--green {
+    background-color: #55c57a;
+    color: #eee; }
+  .btn--white {
+    background-color: black;
+    color: wheat; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    /* background-color: black; */
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2); }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--white::after {
+    background-color: #fff; }
+  .btn--animated {
+    animation: moveinbutton 3s ease-out .35s;
+    animation-fill-mode: backwards; }

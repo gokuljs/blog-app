@@ -4,7 +4,7 @@
     "description": "getting started with blog app",
     "main": "app.js",
     "scripts": {
-        "compile:sass": "node-sass public/sass/show.scss  public/stylesheets/show.css -w"
+        "compile:sass": "node-sass public/sass/main.scss  public/stylesheets/app.css -w"
     },
     "author": "gokul js",
     "license": "ISC",
@@ -16,6 +16,7 @@
         "method-override": "^3.0.0",
         "mongoose": "^5.9.27",
         "node-sass": "^4.14.1",
+        "passport-google-oauth": "^2.0.0",
         "request": "^2.88.2"
     }
 }
