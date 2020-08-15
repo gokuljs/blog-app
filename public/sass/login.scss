@@ -1,0 +1,144 @@
+// variables for colors 
+$color-primary:#55c57a;
+$color-primary-dark:#28b485;
+$color-secondary-light:#ffb900;
+$color-secondary-dark:#ff7730;
+$color-tertiary-light:#2998ff;
+$color-tertiary-dark:#5643fa;
+$color-orange:orange;
+$color-primary-light:#7ed56f;
+$color-grey-dark: #777;
+$color-white:#fff;
+$color-black:#000;
+$color-grey-light-1:#f7f7f7;
+$color-grey-light-2:#eee;
+// my colors
+$color-my-blue:#00203fff;
+$color-my-green:#ADEFD1FF; // fonts
+$color-my-red: #cc0033;
+$color-my-purple: #7a0085;
+$default-font-size:1.6rem;
+// variables that comes under grid system 
+$grid-width:114rem;
+$gutter-vertical:8rem;
+$gutter-horizontal:6rem;
+//this are the basic defination of our project
+// clearfix is used remove the error when we use float and hieght collapses 
+// creating a mixin
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+*,
+*::after,
+ ::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+/* 
+root font size if done in html selector 
+converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
+*/
+
+
+/* '
+1 rem is equal to 10 px 
+*/
+
+html {
+    /*
+here we are setting default font-size for the browser view 
+(10/16)=0.625*100=62.5%,0.625*20=12.5
+
+*/
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    // background-color: black;
+    color: $color-grey-dark;
+    background-image: linear-gradient( 105deg, rgba($color-white, 0.8) 0%, rgba($color-white, 0.7) 50%, transparent 50%), url(../img/loginbg14.jpg);
+    // background-color: ;
+    // background-color: ;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    background-size: cover;
+    /* padding: 30px; */
+    // padding: 3rem;
+}
+
+.login {
+    margin: 0 auto;
+    margin-top: 16rem;
+    width: 60%;
+    padding: 3rem;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+    background-image: linear-gradient( 105deg, rgba($color-white, 0.8) 0%, rgba($color-white, 0.7) 50%, transparent 50%), url(../img/loginbg4.jpg);
+    background-size: cover;
+    &__header {
+        text-transform: uppercase;
+        text-align: center;
+        padding: 2.5rem;
+        font-size: 2.5rem;
+        font-family: 'Oxygen', sans-serif;
+    }
+    &__group {
+        margin: 0 auto;
+        padding: 5rem;
+        padding-bottom: 6rem;
+        margin-left: 22rem;
+        &--user {
+            // margin: 0 auto;
+            width: 60%;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            // text-align: center;
+            padding: 0.6rem;
+            border-style: none;
+            // margin-right: 3rem;
+            display: flex;
+            // border-bottom: 1px solid black;
+            border-radius: .5rem;
+            background-color: #FFC300;
+        }
+        &--password {
+            width: 60%;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            // text-align: center;
+            padding: 0.6rem;
+            border-style: none;
+            // margin-right: 3rem;
+            display: flex;
+            // border-bottom: 1px solid black;
+            border-radius: .5rem;
+            background-color: #FFC300;
+        }
+        &--button {
+            padding: .8rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0 auto;
+            border-radius: .9rem;
+            border-style: none;
+            margin-left: 12rem;
+            background-color: #FFC300;
+        }
+    }
+}

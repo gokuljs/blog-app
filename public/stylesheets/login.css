@@ -1,0 +1,83 @@
+*,
+*::after,
+::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; }
+
+/* 
+root font size if done in html selector 
+converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
+*/
+/* '
+1 rem is equal to 10 px 
+*/
+html {
+  /*
+here we are setting default font-size for the browser view 
+(10/16)=0.625*100=62.5%,0.625*20=12.5
+
+*/
+  font-size: 62.5%; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.7) 50%, transparent 50%), url(../img/loginbg14.jpg);
+  background-size: cover;
+  /* padding: 30px; */ }
+
+.login {
+  margin: 0 auto;
+  margin-top: 16rem;
+  width: 60%;
+  padding: 3rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.7) 50%, transparent 50%), url(../img/loginbg4.jpg);
+  background-size: cover; }
+  .login__header {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 2.5rem;
+    font-family: 'Oxygen', sans-serif; }
+  .login__group {
+    margin: 0 auto;
+    padding: 5rem;
+    padding-bottom: 6rem;
+    margin-left: 22rem; }
+    .login__group--user {
+      width: 60%;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding: 0.6rem;
+      border-style: none;
+      display: flex;
+      border-radius: .5rem;
+      background-color: #FFC300; }
+    .login__group--password {
+      width: 60%;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      padding: 0.6rem;
+      border-style: none;
+      display: flex;
+      border-radius: .5rem;
+      background-color: #FFC300; }
+    .login__group--button {
+      padding: .8rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0 auto;
+      border-radius: .9rem;
+      border-style: none;
+      margin-left: 12rem;
+      background-color: #FFC300; }

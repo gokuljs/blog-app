@@ -143,6 +143,15 @@ app.delete("/blogs/:id", function(req, res) {
     })
 })
 
+// getting started with authentication routes 
+app.get("/register", function(req, res) {
+    res.render("register");
+})
+
+app.get("/login", function(req, res) {
+    res.render("login");
+})
+
 app.listen(4000, function(req, res) {
     console.log("port has started ")
 })
