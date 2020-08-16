@@ -5,7 +5,10 @@ var bodyparser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 var expresssanitizer = require("express-sanitizer");
-// var methodoverride = require("method-overide");
+// authentication 
+var passport = require("passport");
+var localStratergy = require("passport-local");
+var passportlocalmongoose = require("passport-local-mongoose");
 
 
 // database
@@ -21,6 +24,14 @@ app.use(expresssanitizer()); //only requirement is this should always comes afte
 app.use(methodOverride("_method"));
 
 // creating new schema for the blog 
+var userschema = new mongoose.Schema({
+    username: String,
+    password: String,
+});
+
+userschema.plugin(passportlocalmongoose); // this will add some built in methods into mongoose model which we have created 
+
+var user = mongoose.model("user", userschema);
 var blogschema = new mongoose.Schema({
     title: String,
     img: String,
@@ -34,6 +45,20 @@ var blogschema = new mongoose.Schema({
 
 // now once u create the schema then ur compile it into mongoose model
 var blog = mongoose.model("blog", blogschema);
+// passport configeration
+app.use(require("express-session")({
+    secret: "web project for lab",
+    resave: false,
+    saveUninitialized: false,
+    // saveUnitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStratergy(user.authenticate()));
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
+// user.authenticate is present in passport local mongoose 
+
 
 // test case creating one blog 
 // blog.create({
@@ -141,16 +166,62 @@ app.delete("/blogs/:id", function(req, res) {
 
         }
     })
-})
-
+});
+// auth routes
 // getting started with authentication routes 
 app.get("/register", function(req, res) {
     res.render("register");
-})
+});
+
+// handeling signup logic 
+app.post("/register", function(req, res) {
+    // res.send("sigining you up .....");
+    var newUser = new user({ username: req.body.username });
+    // when we try to password directly hashed password is passed to the database
+    user.register(newUser, req.body.password, function(err, user) {
+        if (err) {
+            console.log("error");
+            return res.render("register")
+        } else {
+            passport.authenticate("local")(req, res, function() {
+                res.redirect("/blogs");
+            });
+        }
+    });
+});
+
+// login routes
 
 app.get("/login", function(req, res) {
     res.render("login");
+});
+// gandling login part 
+// way of handling a login is adding a middleware  passport.authenticate()
+// syntax
+// app.post("/login",middleware,callback)
+// when ever we call passport.authenticate it will call passport.use(new localStratergy(user.authenticate()));
+app.post("/login",
+    passport.authenticate("local", {
+        successRedirect: "/blogs",
+        failureRedirect: "/login",
+    }),
+    function(req, res) {
+        // res.send("login posdt request is working");
+
+    });
+
+// logout route
+app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/blogs");
 })
+
+// creating a isloggedin middleware
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+}
 
 app.listen(4000, function(req, res) {
     console.log("port has started ")
