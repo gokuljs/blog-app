@@ -9,18 +9,18 @@
   box-sizing: border-box; }
 
 /* 
-root font size if done in html selector 
-converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
-*/
+  root font size if done in html selector 
+  converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
+ */
 /* '
-1 rem is equal to 10 px 
-*/
+     1 rem is equal to 10 px 
+  */
 html {
   /*
-here we are setting default font-size for the browser view 
-(10/16)=0.625*100=62.5%,0.625*20=12.5
-
-*/
+     here we are setting default font-size for the browser view 
+     (10/16)=0.625*100=62.5%,0.625*20=12.5
+     
+     */
   font-size: 62.5%; }
 
 body {
@@ -29,8 +29,6 @@ body {
   /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
-  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.7) 50%, transparent 50%), url(../img/loginbg6.jpg);
-  background-size: cover;
   /* padding: 30px; */ }
 
 .login {
@@ -39,7 +37,6 @@ body {
   width: 60%;
   padding: 3rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
-  background-image: linear-gradient(106 deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.7) 50%, transparent 50%), url(../img/login1.jpg);
   background-size: cover; }
   .login__header {
     text-transform: uppercase;

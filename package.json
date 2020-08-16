@@ -4,7 +4,7 @@
     "description": "getting started with blog app",
     "main": "app.js",
     "scripts": {
-        "compile:sass": "node-sass public/sass/login.scss  public/stylesheets/login.css -w"
+        "compile:sass": "node-sass public/sass/register.scss  public/stylesheets/register.css -w"
     },
     "author": "gokul js",
     "license": "ISC",

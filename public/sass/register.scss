@@ -1,4 +1,3 @@
-// variables for colors 
 $color-primary:#55c57a;
 $color-primary-dark:#28b485;
 $color-secondary-light:#ffb900;
@@ -35,7 +34,7 @@ $gutter-horizontal:6rem;
 
 *,
 *::after,
- ::before {
+::before {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -46,21 +45,21 @@ $gutter-horizontal:6rem;
 
 
 /* 
-root font size if done in html selector 
-converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
-*/
+  root font size if done in html selector 
+  converting root font size values and migrating font-size from px to rem for building an better responsive pages so while building pages all the sizes are decreased simultaneously 
+ */
 
 
 /* '
-1 rem is equal to 10 px 
-*/
+     1 rem is equal to 10 px 
+  */
 
 html {
     /*
-here we are setting default font-size for the browser view 
-(10/16)=0.625*100=62.5%,0.625*20=12.5
-
-*/
+     here we are setting default font-size for the browser view 
+     (10/16)=0.625*100=62.5%,0.625*20=12.5
+     
+     */
     font-size: 62.5%;
 }
 
@@ -69,17 +68,8 @@ body {
     font-weight: 400;
     /* font-size: 16px; */
     line-height: 1.7;
-    // background-color: black;
-    color: $color-grey-dark;
-    background-image: linear-gradient( 105deg, rgba($color-white, 0.8) 0%, rgba($color-white, 0.7) 50%, transparent 50%), url(../img/loginbg6.jpg);
-    // background-image: linear-gradient(106 deg, rgba($color-white, 0.8) 0%, rgba($color-white, 0.7), transparent 50%), url(../img/loginbg6.jpg);
-    // background-color: ;
-    // background-color: ;
-    // background-repeat: no-repeat;
-    // background-position: center;
-    background-size: cover;
+    color: #777;
     /* padding: 30px; */
-    // padding: 3rem;
 }
 
 .login {
@@ -88,7 +78,7 @@ body {
     width: 60%;
     padding: 3rem;
     box-shadow: 0 1rem 2rem rgba($color-black, 0.5);
-    background-image: linear-gradient(106 deg, rgba($color-white, 0.4) 0%, rgba($color-white, 0.7) 50%, transparent 50%), url(../img/login1.jpg);
+    // background-image: linear-gradient(106 deg, rgba($color-white, 0.4) 0%, rgba($color-white, 0.7) 50%, transparent 50%), url(../img/login1.jpg);
     background-size: cover;
     &__header {
         text-transform: uppercase;
