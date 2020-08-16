@@ -24,14 +24,7 @@ app.use(expresssanitizer()); //only requirement is this should always comes afte
 app.use(methodOverride("_method"));
 
 // creating new schema for the blog 
-var userschema = new mongoose.Schema({
-    username: String,
-    password: String,
-});
 
-userschema.plugin(passportlocalmongoose); // this will add some built in methods into mongoose model which we have created 
-
-var user = mongoose.model("user", userschema);
 var blogschema = new mongoose.Schema({
     title: String,
     img: String,
@@ -41,10 +34,26 @@ var blogschema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    // author: {
+    //     id: {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: "user",
+    //     },
+    //     username: String,
+    // },
 });
 
 // now once u create the schema then ur compile it into mongoose model
 var blog = mongoose.model("blog", blogschema);
+
+var userschema = new mongoose.Schema({
+    username: String,
+    password: String,
+});
+
+userschema.plugin(passportlocalmongoose); // this will add some built in methods into mongoose model which we have created 
+
+var user = mongoose.model("user", userschema);
 // passport configeration
 app.use(require("express-session")({
     secret: "web project for lab",
@@ -123,18 +132,35 @@ app.get("/blogs/:id", isLoggedIn, function(req, res) {
     // res.render("show");
 });
 // getting started with edit route 
-app.get("/blogs/:id/edit", isLoggedIn, function(req, res) {
+app.get("/blogs/:id/edit", function(req, res) {
     console.log(req.params.id);
-    blog.findById(req.params.id, function(err, foundblog) {
-        if (err) {
-            console.log("error !");
-            res.redirect("/blogs")
-        } else {
-            // res.render("show", { blog: foundblog });
-            res.render("edit", { blog: foundblog });
+    if (req.isAuthenticated()) {
 
-        }
-    });
+        blog.findById(req.params.id, function(err, foundblog) {
+            if (err) {
+                console.log("error !");
+                res.redirect("/blogs")
+            } else {
+                // res.render("show", { blog: foundblog });
+                console.log(foundblog.author.id);
+                console.log(req.user._id)
+                res.render("edit", { blog: foundblog });
+
+            }
+        });
+    } else {
+        console.log("you need to be logged in to do that ...")
+    }
+    // blog.findById(req.params.id, function(err, foundblog) {
+    //     if (err) {
+    //         console.log("error !");
+    //         res.redirect("/blogs")
+    //     } else {
+    //         // res.render("show", { blog: foundblog });
+    //         res.render("edit", { blog: foundblog });
+
+    //     }
+    // });
 
     // res.render("edit");
 });
