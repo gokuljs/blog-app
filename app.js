@@ -69,7 +69,8 @@ passport.deserializeUser(user.deserializeUser());
 // Restful Routes 
 // home page 
 app.get("/", function(req, res) {
-    res.render("home")
+    console.log(req.user);
+    res.render("home", { currentuser: req.user });
 });
 // blog page which shows list of all blogs 
 app.get("/blogs", function(req, res) {
@@ -79,14 +80,14 @@ app.get("/blogs", function(req, res) {
         if (err) { //checking any error has occured or not 
             console.log("error occured !");
         } else {
-            res.render("index", { blogs: blogs });
+            res.render("index", { blogs: blogs, currentuser: req.user });
 
         }
     });
 });
 // creating one form to make new blogs
 // new route
-app.get("/blogs/new", function(req, res) {
+app.get("/blogs/new", isLoggedIn, function(req, res) {
     res.render("new")
 });
 // create route 
@@ -109,7 +110,7 @@ app.post("/blogs", function(req, res) {
 });
 
 // show route
-app.get("/blogs/:id", function(req, res) {
+app.get("/blogs/:id", isLoggedIn, function(req, res) {
     console.log(req.params.id);
     blog.findById(req.params.id, function(err, foundblog) {
         if (err) {
@@ -122,7 +123,7 @@ app.get("/blogs/:id", function(req, res) {
     // res.render("show");
 });
 // getting started with edit route 
-app.get("/blogs/:id/edit", function(req, res) {
+app.get("/blogs/:id/edit", isLoggedIn, function(req, res) {
     console.log(req.params.id);
     blog.findById(req.params.id, function(err, foundblog) {
         if (err) {
@@ -221,6 +222,7 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
+    res.redirect("/login");
 }
 
 app.listen(4000, function(req, res) {

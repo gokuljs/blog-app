@@ -22,18 +22,24 @@
             </li>
 
 
-            <li class="header__logo-right">
-                <a href="/logout"> log out </a></li>
-            <li class="header__logo-right">
-                <a href="/login"> sign in </a></li>
-            <li class="header__logo-right">
-                <a href="/register"> sign up </a></li>
-            <li class="header__logo-right">
-                <a href="/blogs/new">New blog</a>
-            </li>
-            <li class="header__logo-right">
-                <a href="/blogs">Blogs</a>
-            </li>
+            <% if(!currentuser){ %>
+                <li class="header__logo-right">
+                    <a href="/login"> sign in </a></li>
+                <li class="header__logo-right">
+                    <a href="/register"> sign up </a></li>
+                <% }else { %>
+                    <li class="header__logo-right"> Signed in as
+                        <%= currentuser.username %>
+                    </li>
+                    <li class="header__logo-right">
+                        <a href="/logout"> log out </a></li>
+                    <% } %>
+                        <li class="header__logo-right">
+                            <a href="/blogs/new">New blog</a>
+                        </li>
+                        <li class="header__logo-right">
+                            <a href="/blogs">Blogs</a>
+                        </li>
 
         </ul>
     </nav>
@@ -55,7 +61,7 @@
                                 <%=blog.created%>
                             </p>
                             <p class="blog__content">
-                                <%= blog.body.substring(0,100) %> ....
+                                <%= blog.body.substring(0,400) %> ....
                             </p>
                             <a href="/blogs/<%=blog._id%> " alt="text" class="btn-text">Read more &rarr; </a>
 

@@ -31,15 +31,23 @@
                     </a>
                 </li>
 
-                <li class="header__logo-right">
-                    <a href="/logout"> log out </a></li>
-                <li class="header__logo-right">
-                    <a href="/login"> sign in </a></li>
-                <li class="header__logo-right">
-                    <a href="/register"> sign up </a></li>
-                <li class="header__logo-right">
-                    <a href="/blogs"> Blogs </a>
-                </li>
+
+                <% if(!currentuser){ %>
+                    <li class="header__logo-right">
+                        <a href="/login"> sign in </a></li>
+                    <li class="header__logo-right">
+                        <a href="/register"> sign up </a></li>
+                    <% }else { %>
+                        <li class="header__logo-right"> Signed in as
+                            <%= currentuser.username %>
+                        </li>
+                        <li class="header__logo-right">
+                            <a href="/logout"> log out </a></li>
+                        <% } %>
+
+                            <li class="header__logo-right">
+                                <a href="/blogs"> Blogs </a>
+                            </li>
 
             </ul>
         </nav>
