@@ -60,8 +60,12 @@
                             <p class="blog__date">
                                 <%=blog.created%>
                             </p>
+                            <p style="font-size:15px">
+                                Author :
+                                <span style="text-transform:uppercase; color: navy;"> <%=blog.author.username%></span>
+                            </p>
                             <p class="blog__content">
-                                <%= blog.body.substring(0,400) %> ....
+                                <%= blog.body.substring(0,200) %> ....
                             </p>
                             <a href="/blogs/<%=blog._id%> " alt="text" class="btn-text">Read more &rarr; </a>
 

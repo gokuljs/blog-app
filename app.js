@@ -34,16 +34,15 @@ var blogschema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    // author: {
-    //     id: {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: "user",
-    //     },
-    //     username: String,
-    // },
-});
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user",
+        },
+        username: String,
+    },
 
-// now once u create the schema then ur compile it into mongoose model
+}); // now once u create the schema then ur compile it into mongoose model
 var blog = mongoose.model("blog", blogschema);
 
 var userschema = new mongoose.Schema({
@@ -89,6 +88,7 @@ app.get("/blogs", function(req, res) {
         if (err) { //checking any error has occured or not 
             console.log("error occured !");
         } else {
+
             res.render("index", { blogs: blogs, currentuser: req.user });
 
         }
@@ -108,7 +108,17 @@ app.post("/blogs", function(req, res) {
     console.log(req.body);
     req.body.blog.body = req.sanitize(req.body.blog.body);
     console.log(req.body);
-    blog.create(req.body.blog, function(err, newblog) {
+    var author = {
+        id: req.user._id,
+        username: req.user.username,
+    }
+    var blogger = {
+        title: req.body.blog.title,
+        img: req.body.blog.img,
+        body: req.body.blog.body,
+        author: author,
+    }
+    blog.create(blogger, function(err, newblog) {
         if (err) {
             console.log("Error !");
             res.render("new")
@@ -126,7 +136,7 @@ app.get("/blogs/:id", isLoggedIn, function(req, res) {
             console.log("error !");
             res.redirect("/blogs")
         } else {
-            res.render("show", { blog: foundblog });
+            res.render("show", { blog: foundblog, currentuser: req.user });
         }
     });
     // res.render("show");
@@ -141,8 +151,8 @@ app.get("/blogs/:id/edit", function(req, res) {
                 console.log("error !");
                 res.redirect("/blogs")
             } else {
-                // res.render("show", { blog: foundblog });
-                console.log(foundblog.author.id);
+                // res.render("show", { blog: foundblog }); 1
+                // console.log(foundblog.author.id);
                 console.log(req.user._id)
                 res.render("edit", { blog: foundblog });
 
@@ -177,7 +187,7 @@ app.put("/blogs/:id", function(req, res) {
             console.log(err);
             res.redirect("/blogs")
         } else {
-            res.redirect("/blogs/" + req.params.id);
+            res.redirect("/blogs");
         }
     });
 });
